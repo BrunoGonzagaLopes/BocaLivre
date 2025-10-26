@@ -18,16 +18,10 @@ O **BocaLivre** é um aplicativo desenvolvido em **React Native** com o objetivo
 - Exibição de restaurantes com informações e imagens  
 - Sistema de categorias dinâmico  
 - Carrossel informativo na tela inicial  
-- Consumo de dados via arquivo JSON  
+- Consumo de dados via arquivo JSON -Temporariamente-  
 - Layout responsivo e adaptado para mobile  
 
 ---
-
-## ⚙️ Como Executar o Projeto
-1. Clone o repositório  
-   ```bash
-   git clone https://github.com/teu-usuario/bocalivre.git
-
 
 🧩 Estrutura do Projeto
 bocalivre/
