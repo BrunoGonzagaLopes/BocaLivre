@@ -7,5 +7,5 @@ export default StyleSheet.create({
     borderRadius: 75,
     borderColor: '#FAB418',
     borderWidth: 3
-  },
+  }
 })

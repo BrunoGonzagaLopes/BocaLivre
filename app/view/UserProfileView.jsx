@@ -43,7 +43,7 @@ export default function UserProfileView() {
       </Pressable>
     </View>
   );
-}
+};
 
 
 const styles = StyleSheet.create({

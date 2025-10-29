@@ -37,4 +37,4 @@ export default function Category() {
       </View>
       </UserProvider>
     )
-}
+};

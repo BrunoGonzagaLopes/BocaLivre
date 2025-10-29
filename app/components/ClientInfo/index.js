@@ -17,4 +17,4 @@ export default function ClientCard() {
       <Text style={styles.info}>{client.email}</Text>
     </View>
   );
-}
+};

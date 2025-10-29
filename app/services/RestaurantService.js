@@ -181,7 +181,7 @@ class RestaurantService {
       d.id, d.name, d.rating ?? 0, d.adress, d.description,
       d.image, d.cpfDono, d.distance ?? 0
     );
-  }
+  };
 
   static async create(data) {
     const now = String(Date.now());

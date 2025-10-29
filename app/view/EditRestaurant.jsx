@@ -6,7 +6,7 @@ import Boll from '../components/BollGeneric';
 import { UserProvider } from "../context/UserContext";
 
 export default function EditRestaurant() {
-  const { id } = useLocalSearchParams(); 
+  const { id } = useLocalSearchParams();
   const router = useRouter();
   const [restaurant, setRestaurant] = useState(null);
   const [name, setName] = useState('');
@@ -91,8 +91,15 @@ export default function EditRestaurant() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#F3EFEA' },
-  label: { fontWeight: 'bold', marginTop: 10 },
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#F3EFEA'
+  },
+  label: {
+    fontWeight: 'bold',
+    marginTop: 10
+  },
   input: {
     borderWidth: 1,
     borderColor: '#ccc',

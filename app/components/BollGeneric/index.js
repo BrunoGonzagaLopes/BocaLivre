@@ -15,4 +15,4 @@ export default function Bola({ style, children, onPress }) {
       </LinearGradient>
     </TouchableOpacity>
   );
-}
+};

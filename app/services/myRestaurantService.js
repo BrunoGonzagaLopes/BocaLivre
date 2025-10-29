@@ -5,7 +5,7 @@ class MyRestaurantService {
     return cpf 
       ? await RestaurantService.getByCpf(cpf)
       : await RestaurantService.buscarRestaurantes();
-  }
-}
+  };
+};
 
 export default MyRestaurantService;

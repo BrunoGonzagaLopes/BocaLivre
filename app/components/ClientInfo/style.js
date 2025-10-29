@@ -16,4 +16,4 @@ export default StyleSheet.create({
         fontFamily:'Roboto',
         color:'#919191'
     }
-})
+});

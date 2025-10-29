@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    containerCategory:{
-        flexDirection:"row",
+  containerCategory:{
+    flexDirection:"row",
     justifyContent: 'space-evenly',
     marginTop:20
     },

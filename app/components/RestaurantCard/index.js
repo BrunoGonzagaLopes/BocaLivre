@@ -40,7 +40,7 @@ const RestaurantCard = ({ cpfDono = null, data = null, editable = false }) => {
   }
 
   return (
-    <>
+    < >
       {!data && <Text style={styles.textChamada}>Restaurantes para conhecer</Text>}
 
       <FlatList

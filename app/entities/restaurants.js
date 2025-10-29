@@ -8,5 +8,5 @@ export default class RestaurantEntity {
     this.image = image;
     this.cpfDono = cpfDono;
     this.distance = distance;
-  }
-}
+  };
+};

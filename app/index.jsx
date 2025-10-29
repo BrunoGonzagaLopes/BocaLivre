@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
     borderColor: '#FAB418',
     borderWidth: 3
   },
-})
+});

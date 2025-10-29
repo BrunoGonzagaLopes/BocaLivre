@@ -62,16 +62,16 @@ export default StyleSheet.create({
         position: 'relative',
         bottom: 10
     },
-  textChamada: {
-    fontFamily: 'Roboto',
-    fontWeight: '700',
-    fontStyle: 'normal',
-    lineHeight: 14,
-    letterSpacing: 0,
-    fontSize: 20,
-    marginTop: 20,
-    marginLeft: 10,
-    color: '#383838',
-    padding: 20
-  }
-});
+    textChamada: {
+        fontFamily: 'Roboto',
+        fontWeight: '700',
+        fontStyle: 'normal',
+        lineHeight: 14,
+        letterSpacing: 0,
+        fontSize: 20,
+        marginTop: 20,
+        marginLeft: 10,
+        color: '#383838',
+        padding: 20
+    }
+    });

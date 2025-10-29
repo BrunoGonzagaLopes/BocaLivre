@@ -12,5 +12,5 @@ export default StyleSheet.create({
     shadowRadius: 2,
     elevation: 5,
     transform: [{ rotate: "0deg" }],
-  },
+  }
 });

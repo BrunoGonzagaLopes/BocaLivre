@@ -14,4 +14,4 @@ export default function ProfileBola({ uri, style, imageStyle, onPress }) {
       />
     </Boll>
   );
-}
+};

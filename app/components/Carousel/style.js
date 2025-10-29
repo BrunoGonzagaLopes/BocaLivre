@@ -24,5 +24,5 @@ export default StyleSheet.create({
   },
   activeDot: {
     backgroundColor: "#FAB418",
-  },
+  }
 });

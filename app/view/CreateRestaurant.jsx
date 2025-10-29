@@ -24,12 +24,12 @@ export default function CreateRestaurant() {
       name,
       description,
       adress,
-      cpfDono: user ?? '', // garante que não será undefined
+      cpfDono: user ?? '',
       image,
     });
 
     Alert.alert('Sucesso', 'Restaurante criado!');
-    router.back(); // volta para a tela anterior
+    router.back(); 
   };
 
   return (
