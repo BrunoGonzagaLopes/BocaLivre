@@ -18,7 +18,7 @@ export default function MyBusinesses() {
   useEffect(() => {
     const loadRestaurants = async () => {
       try {
-        const response = await RestaurantService.getByCpf(user); // filtra pelo CPF do usuário
+        const response = await RestaurantService.getByCpf(user); 
         setRestaurantsList(response);
       } catch (error) {
         console.error(error);

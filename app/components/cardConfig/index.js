@@ -9,7 +9,7 @@ const card = [
   { icon: require('../../assets/images/icons/marcador.png'), description: 'Endereço', view:"/" },
   { icon: require('../../assets/images/icons/pontos.png'), description: 'Meus Pontos', view:"/" },
   { icon: require('../../assets/images/icons/comandas.png'), description: 'Comandas', view:"/" },
-  { icon: require('../../assets/images/icons/notificacao.png'), description: 'Meus Estabelecimentos', view:"/view/MyBusinesses" },
+  { icon: require('../../assets/images/icons/notificacao.png'), description: 'Meus Estabelecimentos', view:"/view/MyRestaurantListView" },
   { icon: require('../../assets/images/icons/notificacao.png'), description: 'Meus Cartões', view:"/" },
   { icon: require('../../assets/images/icons/notificacao.png'), description: 'Notificações', view:"/" },
   { icon: require('../../assets/images/icons/notificacao.png'), description: 'Configurações', view:"/" },

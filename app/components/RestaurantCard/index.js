@@ -60,9 +60,13 @@ const RestaurantCard = ({ cpfDono = null, data = null, editable = false }) => {
                   <Image source={require('../../assets/images/icons/Star.png')} style={{ width: 12, height: 12 }} /> {item.rating ?? 0}
                 </Text>
                 <Text style={styles.Textname}>{item.name}</Text>
-                <Text style={styles.Distance}>
+                {data && (<Text style={styles.Distance}>
                   <Image source={require('../../assets/images/icons/marcador.png')} style={{ width: 10, height: 10 }} /> {item.adress}
-                </Text>
+                </Text>)}
+                {!data && (<Text style={styles.Distance}>
+                  <Image source={require('../../assets/images/icons/marcador.png')} style={{ width: 10, height: 10 }} /> {item.distance}Km
+                </Text>)}
+
                 <Text style={styles.DescriptionCard}>{item.description}</Text>
               </View>
 
