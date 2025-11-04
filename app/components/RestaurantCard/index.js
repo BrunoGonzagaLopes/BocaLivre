@@ -73,7 +73,7 @@ const RestaurantCard = ({ cpfDono = null, data = null, editable = false }) => {
               {editable && (
                 <TouchableOpacity
                   style={styles.EditIcon}
-                  onPress={() => router.push({ pathname: '/view/EditRestaurant', params: { id: item.id } })}
+                  onPress={() => router.push({ pathname: '/view/EditMyRestaurantView', params: { id: item.id } })}
                 >
                   <Image source={require('../../assets/images/icons/edit.png')} style={{ width: 20, height: 20 }} />
                 </TouchableOpacity>

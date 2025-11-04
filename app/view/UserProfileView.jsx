@@ -6,7 +6,7 @@ import { UserProvider } from "../context/UserContext";
 import Boll from '../components/BollGeneric';
 import Profile from '../components/Profile';
 import ClientInfo from '../components/ClientInfo';
-import CardConfig from '../components/cardConfig';
+import CardConfig from '../components/ProfileMenu';
 
 export default function UserProfileView() {
   return (

@@ -3,7 +3,7 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router"
 import Boll from './components/BollGeneric';
 import Carousel from './components/Carousel';
-import Category from "./components/category";
+import FoodCategory from "./components/FoodCategory";
 import RestaurantCard from './components/RestaurantCard';
 import Search from './components/Search';
 import Profile from './components/Profile';
@@ -35,7 +35,7 @@ export default function Index() {
         <Carousel></Carousel>
 
         {/* categorias */}
-        <Category></Category>
+        <FoodCategory></FoodCategory>
 
         {/* Chamada */}
         <RestaurantCard></RestaurantCard>
