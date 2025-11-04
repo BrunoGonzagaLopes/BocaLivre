@@ -1,6 +1,6 @@
-# 📱 BocaLivre
+# 📱 Tour Mat
 
-O **BocaLivre** é um aplicativo desenvolvido em **React Native** com o objetivo de conectar clientes a restaurantes e bares locais. Ele oferece uma experiência moderna e intuitiva, permitindo que o usuário explore estabelecimentos, visualize informações, categorias e promoções de forma prática e acessível.
+O **Tour Mat** é um aplicativo desenvolvido em **React Native** com o objetivo de conectar clientes a restaurantes e bares locais. Ele oferece uma experiência moderna e intuitiva, permitindo que o usuário explore estabelecimentos, visualize informações, categorias e promoções de forma prática e acessível.
 
 ---
 
