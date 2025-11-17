@@ -4,11 +4,12 @@ import {router} from "expo-router";
 const BASE_URL = "http://52.67.58.153:8080/api";
 
 export async function get(endpoint) {
+  let token = "Z2FicmllbEB2aWN0b3IuY29tOmR3YWRhd2Rhd2Y=";
   return  await fetch(`${BASE_URL}/${endpoint}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Basic ${localStorage.getItem("token")}`
+      "Authorization": `Basic ${token}`,
     },
   }).then(res => {
     if (res.status === 401) {
@@ -19,11 +20,12 @@ export async function get(endpoint) {
 }
 
 export async function post(endpoint, body) {
+  let token = await AsyncStorage.getItem("token");
   return await fetch(`${BASE_URL}/${endpoint}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Basic ${await AsyncStorage.getItem("token")}`
+      "Authorization": `Basic ${token}`
     },
     body: body
   }).then(res => {

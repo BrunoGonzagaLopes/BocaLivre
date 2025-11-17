@@ -3,25 +3,21 @@ import { FlatList, Image, Text, TouchableOpacity, View, ActivityIndicator } from
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
 import { useRouter } from 'expo-router';
-import RestaurantService from '../../services/RestaurantService';
+import {getAllHTTP} from '../../services/RestaurantService';
 
 const RestaurantCard = ({ cpfDono = null, data = null, editable = false }) => {
-  const [restaurants, setRestaurants] = useState(data || []);
+  const [restaurants, setRestaurants] = useState(Array);
   const [loading, setLoading] = useState(!data);
   const router = useRouter();
 
   useEffect(() => {
-    if (data) return;
-
     const loadRestaurants = async () => {
-      try {
-        const response = await RestaurantService.getAllHTTP("api/estabelecimentos");
-        setRestaurants(Array.isArray(response) ? response : []);
-      } catch (error) {
-        console.error('Erro ao carregar restaurantes:', error);
-      } finally {
-        setLoading(false);
-      }
+      setLoading(true);
+      const response = await getAllHTTP();
+      console.log(response);
+      setRestaurants(response);
+
+      setLoading(false);
     };
 
     loadRestaurants();
