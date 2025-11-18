@@ -36,14 +36,15 @@ export default StyleSheet.create({
         textAlign: 'left',
         fontFamily: 'Roboto',
         fontWeight: '700',
-        fontSize: 16,
+        fontSize: 28,
 
         color: '#595959',
     },
     Info: {
         textAlign: 'left',
         fontFamily: 'Roboto',
-        fontSize: 10,
+        fontSize: 12,
+        width: '95%',
         color: '#595959',
         maxWidth: 195,
         marginTop: 5
@@ -59,7 +60,7 @@ export default StyleSheet.create({
         color:'#7c7c7c',
         fontFamily: 'Roboto',
         fontWeight: '700',
-        fontSize: 14,
+        fontSize: 16,
     },
     TextCode: {
         position: 'relative',
@@ -68,7 +69,7 @@ export default StyleSheet.create({
         color: '#FCC419',
         fontFamily: 'Roboto',
         fontWeight: '700',
-        fontSize: 12,
+        fontSize: 18,
         padding:2,
         borderWidth:1,
         borderColor:'#FCC419',

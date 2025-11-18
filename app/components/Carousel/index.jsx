@@ -40,7 +40,7 @@ export default function Carousel() {
         snapToInterval={ITEM_WIDTH + ITEM_MARGIN}
         decelerationRate="fast"
         renderItem={({ item }) => (
-          <View style={{ width: ITEM_WIDTH, marginHorizontal: ITEM_MARGIN / 1 }}>
+          <View style={{ width: ITEM_WIDTH, marginHorizontal: ITEM_MARGIN / 1}}>
             <Image source={item} style={styles.image} />
           </View>
         )}

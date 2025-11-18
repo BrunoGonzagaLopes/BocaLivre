@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Star } from 'phosphor-react-native';
 
 export default function RatingScreen() {
   const [rating, setRating] = useState(0);

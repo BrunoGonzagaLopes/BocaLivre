@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {// This makes it an inset shadow
-    width: '90%',
+    width: '85%',
     height: 45,
     backgroundColor: '#ffffffff',
     borderRadius: 12,
@@ -11,6 +11,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     marginVertical: 20,
+    boxShadow: 'inset 0px 3px 2px 2px rgba(0,0,0,0.1)'
   },
   input: {
     flex: 1,

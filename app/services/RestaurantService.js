@@ -33,6 +33,11 @@ export async function getAllHTTP(dados) {
   return restaurantes.map(e => toEntity(e));
 }
 
+export async function getById(id) {
+  let restaurantes = await get(`estabelecimentos/${id}`)
+  return toEntity(restaurantes);
+}
+
 export async function getFavoritos() {
   let restaurantes = await get(`usuarios/favoritos`)
   return restaurantes.map(e => toEntity(e));
