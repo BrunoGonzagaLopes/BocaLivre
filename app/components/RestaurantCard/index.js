@@ -3,7 +3,8 @@ import { FlatList, Image, Text, TouchableOpacity, View, ActivityIndicator } from
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
 import { useRouter } from 'expo-router';
-import RestaurantService from '../../services/RestaurantService';
+import {getAllHTTP} from '../../services/RestaurantService';
+import {dataMaisProxima} from '../../services/Util';
 
 const RestaurantCard = ({ data = null}) => {
   const [restaurants, setRestaurants] = useState(data || []);
@@ -18,13 +19,14 @@ const RestaurantCard = ({ data = null}) => {
       let dados = {distancia: 5000}
       const response = await getAllHTTP(dados);
       console.log(response);
+      console.log(dataMaisProxima("15/12/2025","27/11/2025"));
       setRestaurants(response);
 
       setLoading(false);
     };
 
     loadRestaurants();
-  }, [cpfDono, data]);
+  }, []);
 
   if (loading) {
     return (
