@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { CameraView } from 'expo-camera';
 import { useQrCodeService } from '../services/qrCodeService';
-
+import { router } from 'expo-router';
 export default function QrScannerView() {
   const [scanned, setScanned] = useState(false);
   const { permission, requestPermission, handleBarCodeScanned } = useQrCodeService();
@@ -30,8 +30,8 @@ export default function QrScannerView() {
         <View style={styles.focusBox} />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => setScanned(false)}>
-        <Text style={styles.buttonText}>Recolher pontos</Text>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/view/CuponsListView')}>
+        <Text style={styles.buttonText}>Voltar</Text>
       </TouchableOpacity>
     </View>
   );

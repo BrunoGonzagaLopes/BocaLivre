@@ -3,26 +3,29 @@ import { FlatList, Image, Text, TouchableOpacity, View, ActivityIndicator } from
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
 import { useRouter } from 'expo-router';
-import {getAllHTTP} from '../../services/RestaurantService';
+import RestaurantService from '../../services/RestaurantService';
 
-const RestaurantCard = ({ cpfDono = null, data = null, editable = false }) => {
-  const [restaurants, setRestaurants] = useState(Array);
+const RestaurantCard = ({ data = null}) => {
+  const [restaurants, setRestaurants] = useState(data || []);
   const [loading, setLoading] = useState(!data);
   const router = useRouter();
 
   useEffect(() => {
-    const loadRestaurants = async () => {
-      setLoading(true);
-      let dados = {distancia: 5000}
-      const response = await getAllHTTP(dados);
-      console.log(response);
-      setRestaurants(response);
+    if (data) return;
 
-      setLoading(false);
+    const loadRestaurants = async () => {
+      try {
+        const response = await RestaurantService.getAllHTTP("api/estabelecimentos");
+        setRestaurants(Array.isArray(response) ? response : []);
+      } catch (error) {
+        console.error('Erro ao carregar restaurantes:', error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadRestaurants();
-  }, [cpfDono, data]);
+  }, [data]);
 
   if (loading) {
     return (
@@ -57,24 +60,12 @@ const RestaurantCard = ({ cpfDono = null, data = null, editable = false }) => {
                   <Image source={require('../../assets/images/icons/Star.png')} style={{ width: 12, height: 12 }} /> {item.rating ?? 0}
                 </Text>
                 <Text style={styles.Textname}>{item.name}</Text>
-                {data && (<Text style={styles.Distance}>
-                  <Image source={require('../../assets/images/icons/marcador.png')} style={{ width: 10, height: 10 }} /> {item.adress}
-                </Text>)}
-                {!data && (<Text style={styles.Distance}>
+                <Text style={styles.Distance}>
                   <Image source={require('../../assets/images/icons/marcador.png')} style={{ width: 10, height: 10 }} /> {item.distance}Km
-                </Text>)}
+                </Text>
 
                 <Text style={styles.DescriptionCard}>{item.description}</Text>
               </View>
-
-              {editable && (
-                <TouchableOpacity
-                  style={styles.EditIcon}
-                  onPress={() => router.push({ pathname: '/view/EditMyRestaurantView', params: { id: item.id } })}
-                >
-                  <Image source={require('../../assets/images/icons/edit.png')} style={{ width: 20, height: 20 }} />
-                </TouchableOpacity>
-              )}
             </LinearGradient>
           </TouchableOpacity>
         )}

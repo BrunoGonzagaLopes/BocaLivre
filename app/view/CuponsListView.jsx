@@ -5,7 +5,7 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import BollGereric from '../components/BollGeneric'
 import Points from "../components/Points";
 import CuponsCard from "../components/CuponsCard";
-import { Ionicons, MaterialCommunityIcons  } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function CreateRestaurant() {
   const { user } = useUser();
@@ -17,33 +17,40 @@ export default function CreateRestaurant() {
   }, [user]);
   return (
 
-      <View style={{ backgroundColor: '#F3EFEA', flexDirection: "column",flex:1 }}>
+    <View style={{ backgroundColor: '#F3EFEA', flexDirection: "column", flex: 1 }}>
 
 
-        {/* Header */}
-        <View style={styles.containerHeader}>
-          <BollGereric style={styles.positionBoll} onPress={() => router.push('/')}>
+      {/* Header */}
+      <View style={styles.containerHeader}>
+        <BollGereric style={styles.positionBoll} onPress={() => router.push('/')}>
           <MaterialCommunityIcons name="chevron-left" size={40} color="black" />
-          </BollGereric>
+        </BollGereric>
 
-          <View style={styles.ContainerPoints}>
-            <Text style={styles.Points}>Meus Pontos</Text>
-            <Points></Points>
-          </View>
-          <BollGereric
-            style={styles.positionBoll}
-            onPress={() => router.push('/view/QrScannerView')}
-          >
-            <Ionicons name="qr-code" size={32} color="black" />
-          </BollGereric>
+        <View style={styles.ContainerPoints}>
+          <Text style={styles.Points}>Meus Pontos</Text>
+          <Points></Points>
         </View>
-        {/* Main  */}
-       <View style={styles.ContainerMain}>
-        
-
-       </View>
+        <BollGereric
+          style={styles.positionBoll}
+          onPress={() => router.push('/view/QrScannerView')}
+        >
+          <Ionicons name="qr-code" size={32} color="black" />
+        </BollGereric>
       </View>
-    
+      {/* Main  */}
+      <View style={styles.ContainerMain}>
+        <View style={{flexDirection:'row',justifyContent:'space-between' }}>
+          <Text style={styles.textcupons}>Cupons Disponíveis</Text>
+          <Text style={styles.textcupons}>Histórico</Text>
+        </View>
+        <CuponsCard></CuponsCard>
+      </View>
+      <View style={styles.ContainerMain}>
+        <Text style={styles.textcupons}>Cupons Disponíveis</Text>
+        <CuponsCard></CuponsCard>
+      </View>
+    </View>
+
   )
 
 }
@@ -63,12 +70,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginHorizontal: 20
   },
-  iconBoll: {
-    width: '66%',
-    height: '66%',
-    margin: 'auto'
-  }
-  ,
+
   Points: {
     color: '#939393',
     fontFamily: 'Roboto',
@@ -79,21 +81,14 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     textAlign: 'center'
   },
-  myLocalization: {
+  ContainerMain: {
+    marginTop: 30,
+    marginHorizontal: 15
+  },
+  textcupons: {
+    color: '#595959',
     fontFamily: 'Roboto',
     fontWeight: '700',
-    fontStyle: 'normal',
-    fontSize: 10,
-    lineHeight: 14,
-    letterSpacing: 0.5,
-    textAlign: 'center'
-  },
-
-  imageBoll: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 50,
-    borderColor: '#FAB418',
-    borderWidth: 3
-  },
+    fontSize: 16
+  }
 });

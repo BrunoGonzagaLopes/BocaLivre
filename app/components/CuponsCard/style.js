@@ -7,8 +7,8 @@ export default StyleSheet.create({
         marginVertical: 10,
     },
     InfoCard: {
-        width: 390,
-        height: 100,
+        width: '100%',
+        height: 120,
         borderRadius: 12,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 5 },
@@ -36,14 +36,13 @@ export default StyleSheet.create({
         textAlign: 'left',
         fontFamily: 'Roboto',
         fontWeight: '700',
-        fontSize: 20,
+        fontSize: 16,
 
         color: '#595959',
     },
     Info: {
         textAlign: 'left',
         fontFamily: 'Roboto',
-        fontWeight: '700',
         fontSize: 10,
         color: '#595959',
         maxWidth: 195,
