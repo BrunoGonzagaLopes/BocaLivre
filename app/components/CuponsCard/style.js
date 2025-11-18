@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 export default StyleSheet.create({
     ContainerCard: {
         marginLeft: '1%',
@@ -36,8 +36,7 @@ export default StyleSheet.create({
         textAlign: 'left',
         fontFamily: 'Roboto',
         fontWeight: '700',
-        fontSize: 28,
-
+        fontSize: RFValue(16),
         color: '#595959',
     },
     Info: {
