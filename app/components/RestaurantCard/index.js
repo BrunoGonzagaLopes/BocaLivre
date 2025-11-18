@@ -3,9 +3,14 @@ import { FlatList, Image, Text, TouchableOpacity, View, ActivityIndicator } from
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
 import { useRouter } from 'expo-router';
-import {getAllHTTP} from '../../services/RestaurantService';
-import {dataMaisProxima} from '../../services/Util';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import {getAllHTTP, getById} from '../../services/RestaurantService';
+import '../../components/Stars';
+import Stars from "../Stars";
+
+async function navToEstabelecimento(id){
+  let restaurante = await getById(id);
+  console.log(restaurante);
+}
 
 const RestaurantCard = ({ data = null }) => {
   const [restaurants, setRestaurants] = useState(data || []);
@@ -17,9 +22,9 @@ const RestaurantCard = ({ data = null }) => {
 
     const loadRestaurants = async () => {
       setLoading(true);
-      let dados = { distancia: 10000 }
+      let dados = { distancia: 20000 }
       const response = await getAllHTTP(dados);
-      console.log(AsyncStorage.getItem("token"));
+
       setRestaurants(response);
       setLoading(false);
     };
@@ -45,9 +50,9 @@ const RestaurantCard = ({ data = null }) => {
         data={restaurants}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.ContainerCard}>
+          <TouchableOpacity style={styles.ContainerCard} onPress={() => navToEstabelecimento(item.id)}>
             <LinearGradient
-              colors={["#FEFEFB", "#F3F3F3"]}
+              colors={["#FFFFFF", "#f3f3f3"]}
               start={{ x: 0.5, y: 0 }}
               end={{ x: 0.5, y: 1 }}
               style={styles.RestaurantInfoCard}
@@ -55,14 +60,15 @@ const RestaurantCard = ({ data = null }) => {
               <Image style={styles.RestaurantImageCard} source={{ uri: item.image }} />
               <View style={styles.ContainerTextInfoCard}>
                 <Text style={styles.ValueInfo}>
-                  <Image source={require('../../assets/images/icons/Star.png')} style={{ width: 12, height: 12 }} /> {item.rating ?? 0}
+                  <Stars avaliacao={item.rating}></Stars>
                 </Text>
                 <Text style={styles.Textname}>{item.name}</Text>
-                <Text style={styles.Distance}>
-                  <Image source={require('../../assets/images/icons/marcador.png')} style={{ width: 10, height: 10 }} /> {item.distance}Km
-                </Text>
+                <View style={styles.Distance}>
+                  <Image source={require('../../assets/images/icons/marcador.png')} style={{ width: 15, height: 15 }} />
+                  <Text style={styles.TextDistance}>{item.distance}Km</Text>
+                </View>
 
-                <Text style={styles.DescriptionCard}>{item.description}</Text>
+
               </View>
             </LinearGradient>
           </TouchableOpacity>

@@ -1,4 +1,3 @@
-
 export function validarNome(nome) {
   if (!nome || nome.trim().length < 8) {
     return {

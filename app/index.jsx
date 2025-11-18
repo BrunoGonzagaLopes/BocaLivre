@@ -50,6 +50,10 @@ export default function Index() {
         <Search />
         <Carousel />
         <FoodCategory />
+        <View style={styles.ContainerTextoRestaurantes}>
+          <Text style={styles.TextoRestaurantes}>Restaurantes para conhecer</Text>
+          <Text style={styles.TextoRestaurantesLink}>Veja mais</Text>
+        </View>
         <RestaurantCard />
       </View>
     </ScrollView>
@@ -61,6 +65,29 @@ export default function Index() {
 
 
 const styles = StyleSheet.create({
+  ContainerTextoRestaurantes: {
+    width: '90%',
+    marginVertical: 10,
+    marginHorizontal: "auto",
+    flex: 1,
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  TextoRestaurantes: {
+    fontSize: 24,
+    fontFamily: 'Roboto',
+    fontWeight: '700',
+    fontStyle: 'normal',
+
+  },
+  TextoRestaurantesLink: {
+    fontSize: 20,
+    fontFamily: 'Roboto',
+    fontWeight: '700',
+    color: '#4d4d4d',
+    fontStyle: 'normal',
+  },
   containerHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',

@@ -12,17 +12,16 @@ export default function CuponsCard({desconto, dataLimite, valor}) {
               end={{ x: 0.5, y: 1 }}
               style={styles.InfoCard}
             >
-              <Image style={styles.ImageCupom} source={require('../../assets/images/icons/cupom.png')} />
-              <View style={styles.ContainerTextInfoCard}>
+                  <Image style={styles.ImageCupom} source={require('../../assets/images/icons/cupom.png')} />
+                  <View style={styles.ContainerTextInfoCard}>
+                      <Text style={styles.Value}>{desconto}</Text>
+                      <Text style={styles.Info}>Válido em todos os estabelecimento cadastrados.</Text>
+                  </View>
 
-                <Text style={styles.Value}>{desconto}</Text>
-                   <Text style={styles.Info}>Válido em todos os estabelecimento cadastrados.</Text>
-        
-              </View>
-            <View style={styles.ContainerInfoBuy}>
-              <Text style={styles.TextValidity}>{dataLimite}</Text>
-              <Text style={styles.TextCode}>{valor}</Text>
-            </View>
+                <View style={styles.ContainerInfoBuy}>
+                  <Text style={styles.TextValidity}>{dataLimite}</Text>
+                  <Text style={styles.TextCode}>{valor}</Text>
+                </View>
             </LinearGradient>
           </TouchableOpacity>
 

@@ -4,7 +4,8 @@ export default StyleSheet.create({
   containerCategory:{
     flexDirection:"row",
     justifyContent: 'space-evenly',
-    marginTop:20
+    marginTop:20,
+    marginBottom:20,
     },
   categoryBoll:{
     width:60,
