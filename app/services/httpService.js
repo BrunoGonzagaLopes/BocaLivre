@@ -4,9 +4,25 @@ import {router} from "expo-router";
 const BASE_URL = "http://52.67.58.153:8080/api";
 
 export async function get(endpoint) {
-  let token = "Z2FicmllbEB2aWN0b3IuY29tOmR3YWRhd2Rhd2Y=";
+  let token = await AsyncStorage.getItem("token");
   return  await fetch(`${BASE_URL}/${endpoint}`, {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Basic ${token}`,
+    },
+  }).then(res => {
+    if (res.status === 401) {
+      router.push("/view/LoginView");
+    }
+    return res.json()
+  }).catch(err => console.log(err));
+}
+
+export async function deletar(endpoint) {
+  let token = await AsyncStorage.getItem("token");
+  return  await fetch(`${BASE_URL}/${endpoint}`, {
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Basic ${token}`,

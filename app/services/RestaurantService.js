@@ -1,7 +1,6 @@
 import RestaurantEntity from "../entities/restaurants";
-import {get} from "../services/httpService";
+import {get, post, deletar} from "../services/httpService";
 import {getCurrentAddress} from "../services/locationService";
-
 
 const toEntity = (d) => {
   return new RestaurantEntity(
@@ -10,12 +9,41 @@ const toEntity = (d) => {
   );
 };
 
-export async function getAllHTTP() {
+export async function getAllHTTP(dados) {
   let localizacaoaAtual = await getCurrentAddress();
   let enderecoFormatado = "";
+
   if (localizacaoaAtual != null) {
     enderecoFormatado = `${localizacaoaAtual.street}, ${localizacaoaAtual.streetNumber}. ${localizacaoaAtual.postalCode}, ${localizacaoaAtual.district}`
   }
-  let restaurantes = await get(`estabelecimentos?endereco=${enderecoFormatado}`)
+
+  if (dados.nome == null) {
+    dados.nome = "";
+  }
+
+  if (dados.categoria == null) {
+    dados.categoria = "";
+  }
+
+  if (dados.distancia == null) {
+    dados.distancia = "";
+  }
+
+  let restaurantes = await get(`estabelecimentos?nome=${dados.nome}&endereco=${enderecoFormatado}&categoria=${dados.categoria}&distancia=${dados.distancia}`)
+  return restaurantes.map(e => toEntity(e));
+}
+
+export async function getFavoritos() {
+  let restaurantes = await get(`usuarios/favoritos`)
+  return restaurantes.map(e => toEntity(e));
+}
+
+export async function deleteFavorito(favoritoId) {
+  let restaurantes = await deletar(`usuarios/favoritos/${favoritoId}`);
+  return restaurantes.map(e => toEntity(e));
+}
+
+export async function favoritar(favoritoId) {
+  let restaurantes = await post(`usuarios/favoritos/${favoritoId}`);
   return restaurantes.map(e => toEntity(e));
 }

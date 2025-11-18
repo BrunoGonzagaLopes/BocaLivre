@@ -19,7 +19,7 @@ export default function FoodCategory() {
     <View style={styles.containerCategory}>
       {categories.map((item) => (
         <View key={item.id} style={styles.itemContainer}>
-         <Boll style={styles.categoryBoll}><Image source={item.image} style={styles.iconBoll}/></Boll>
+         <Boll style={styles.categoryBoll}><Image source={{ uri: item.image }} style={styles.iconBoll}/></Boll>
           <Text style={styles.description}>{item.name}</Text>
         </View>
       ))}

@@ -6,7 +6,7 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     marginTop:20
     },
-    categoryBoll:{
+  categoryBoll:{
     width:60,
     height:60,
     textAlign:'center'
