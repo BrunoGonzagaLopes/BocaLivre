@@ -34,7 +34,7 @@ export default function CreateRestaurant() {
   return (
 
     <View style={{ backgroundColor: '#F3EFEA', flexDirection: "column", flex: 1 }}>
-
+      <ScrollView>
 
       {/* Header */}
       <View style={styles.containerHeader}>
@@ -74,6 +74,7 @@ export default function CreateRestaurant() {
             <CuponsCard key={cupon.nome} valor={cupon.valor} desconto={cupon.desconto} dataLimite={cupon.dataLimite}></CuponsCard>
         ))}
       </View>
+      </ScrollView>
     </View>
 
   )

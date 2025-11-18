@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-      imageBoll: {
+    imageBoll: {
     width: '100%',
     height: '100%',
     borderRadius: 75,

@@ -46,13 +46,9 @@ export default function MyBusinesses() {
         </Text>
       </Boll>
 
-      <Text style={styles.title}>Meus Estabelecimentos</Text>
+      <Text style={styles.title}>Meus Favoritos</Text>
       <RestaurantCard data={restaurantsList} editable={true} />
-      <Boll style={styles.componentBoll}>
-        <Text style={styles.iconBoll} onPress={() => router.push('/view/CreateRestaurant')}>
-          {'+'}
-        </Text>
-      </Boll>
+      
     </View>
   );
 }
