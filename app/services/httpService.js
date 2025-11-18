@@ -43,7 +43,7 @@ export async function post(endpoint, body) {
       "Content-Type": "application/json",
       "Authorization": `Basic ${token}`
     },
-    body: body
+    body: JSON.stringify(body)
   }).then(res => {
     if (res.status === 401) {
       router.push("/view/LoginView");
@@ -66,5 +66,27 @@ export async function login(email, senha) {
     }
 
     return "/view/LoginView";
+  }).catch(err => console.log(err));
+}
+
+export async function cadastro(nome, email, senha, cpf, telefone) {
+  return  await fetch(`${BASE_URL}/usuarios/public`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({nome: nome, cpf: cpf, email: email, senha: senha, telefone: telefone})
+  }).then(res => {
+    if (res.status === 409) {
+      alert("Dados Inválidos");
+    }
+
+    if (res.status === 422) {
+      return res.json().dados;
+    }
+
+    console.log("cadastrada: " + btoa(`${email}:${senha}`));
+    AsyncStorage.setItem("token", btoa(`${email}:${senha}`));
+    return "/";
   }).catch(err => console.log(err));
 }

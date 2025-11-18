@@ -3,7 +3,9 @@ import { FlatList, Image, Text, TouchableOpacity, View, ActivityIndicator } from
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
 import { useRouter } from 'expo-router';
-import { getAllHTTP } from '../../services/RestaurantService';
+import {getAllHTTP} from '../../services/RestaurantService';
+import {dataMaisProxima} from '../../services/Util';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const RestaurantCard = ({ data = null }) => {
   const [restaurants, setRestaurants] = useState(data || []);
@@ -17,14 +19,13 @@ const RestaurantCard = ({ data = null }) => {
       setLoading(true);
       let dados = { distancia: 10000 }
       const response = await getAllHTTP(dados);
-      console.log(response);
+      console.log(AsyncStorage.getItem("token"));
       setRestaurants(response);
       setLoading(false);
     };
 
     loadRestaurants();
   }, []);
-
 
   if (loading) {
     return (

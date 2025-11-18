@@ -1,20 +1,35 @@
 import { router } from "expo-router";
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import { useUser } from '../context/UserContext';
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import BollGereric from '../components/BollGeneric'
 import Points from "../components/Points";
 import CuponsCard from "../components/CuponsCard";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import {getAllCupons, getAllCuponsByUsuario} from '../services/BeneficiosSevice';
+import {dataMaisProxima} from '../services/Util';
 
 export default function CreateRestaurant() {
   const { user } = useUser();
+  const [cupons, setCupons] = useState(Array)
+  const [cuponsUruario, setCuponsUruario] = useState(Array)
 
   useEffect(() => {
-    if (user == null) {
-      router.push('/view/LoginView');
+    const loadCupom = async () => {
+      const response = await getAllCupons();
+      console.log(response);
+      setCupons(response);
     }
-  }, [user]);
+
+    const loadCupomUsuario = async () => {
+      const response = await getAllCuponsByUsuario();
+      console.log(response);
+      setCuponsUruario(response);
+    }
+
+    loadCupom();
+    loadCupomUsuario();
+  }, []);
   return (
 
     <View style={{ backgroundColor: '#F3EFEA', flexDirection: "column", flex: 1 }}>
@@ -30,24 +45,33 @@ export default function CreateRestaurant() {
           <Text style={styles.Points}>Meus Pontos</Text>
           <Points></Points>
         </View>
+
         <BollGereric
           style={styles.positionBoll}
           onPress={() => router.push('/view/QrScannerView')}
         >
           <Ionicons name="qr-code" size={32} color="black" />
         </BollGereric>
+
+
       </View>
-      {/* Main  */}
+      {/* Cupons do usuario  */}
       <View style={styles.ContainerMain}>
         <View style={{flexDirection:'row',justifyContent:'space-between' }}>
           <Text style={styles.textcupons}>Cupons Disponíveis</Text>
           <Text style={styles.textcupons}>Histórico</Text>
         </View>
-        <CuponsCard></CuponsCard>
+        {cuponsUruario.map((cupon) => (
+            <CuponsCard key={cupon.nome} valor={cupon.codigo} desconto={cupon.cupom.desconto} dataLimite={dataMaisProxima(cupon.cupom.dataLimite, cupon.dataExpiracao)}></CuponsCard>
+        ))}
       </View>
+
+      {/* Cupons gerias  */}
       <View style={styles.ContainerMain}>
         <Text style={styles.textcupons}>Cupons Disponíveis</Text>
-        <CuponsCard></CuponsCard>
+        {cupons.map((cupon) => (
+            <CuponsCard key={cupon.nome} valor={cupon.valor} desconto={cupon.desconto} dataLimite={cupon.dataLimite}></CuponsCard>
+        ))}
       </View>
     </View>
 

@@ -1,7 +1,20 @@
 import styles from './style';
 import { Image, Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import {useEffect, useState} from "react";
+import {getPontuacao} from "../../services/BeneficiosSevice";
+
 export default function Points() {
+    const [pontos, setPontos] = useState(0);
+
+    useEffect(() => {
+        const loadPontos = async () => {
+            const response = await getPontuacao();
+            console.log(response);
+            setPontos(response);
+        }
+        loadPontos();
+    })
 
     return (
         <TouchableOpacity>
@@ -12,7 +25,7 @@ export default function Points() {
                 style={[styles.container]}>
 
                 <Image style={styles.image} source={require('../../assets/images/icons/moeda.png')} />
-                <Text style={styles.textPoints}>15990</Text>
+                <Text style={styles.textPoints}>{pontos}</Text>
             </LinearGradient>
         </TouchableOpacity>
     );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } from "react-native";
 import { validarEmail, validarCPF, validarSenha, validarNome } from "../services/validationCadastroService";
-import Boll from '../components/BollGeneric'
+import { cadastro } from "../services/httpService";
 
 export default function CadastroScreen() {
     const [nome, setNome] = useState("");
@@ -11,16 +11,7 @@ export default function CadastroScreen() {
     const [confirmarSenha, setConfirmarSenha] = useState("");
 
     function handleCadastro() {
-        const nomeCheck = validarNome(nome);
-        if (!nomeCheck.valido) return Alert.alert(nomeCheck.mensagem);
-
-        if (!validarCPF(cpf)) return Alert.alert("CPF inválido");
-        if (!validarEmail(email)) return Alert.alert("Email inválido");
-
-        const senhaCheck = validarSenha(senha, confirmarSenha);
-        if (!senhaCheck.valido) return Alert.alert(senhaCheck.mensagem);
-
-        Alert.alert("Cadastro realizado com sucesso!");
+        cadastro(nome, email, senha, cpf, "5531998579244");
     }
 
     return (
