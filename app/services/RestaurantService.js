@@ -38,12 +38,17 @@ export async function getFavoritos() {
   return restaurantes.map(e => toEntity(e));
 }
 
-export async function deleteFavorito(favoritoId) {
-  let restaurantes = await deletar(`usuarios/favoritos/${favoritoId}`);
+export async function deleteFavorito(restauranteId) {
+  let restaurantes = await deletar(`usuarios/favoritos/${restauranteId}`);
   return restaurantes.map(e => toEntity(e));
 }
 
-export async function favoritar(favoritoId) {
-  let restaurantes = await post(`usuarios/favoritos/${favoritoId}`);
+export async function favoritar(restauranteId) {
+  let restaurantes = await post(`usuarios/favoritos/${restauranteId}`);
+  return restaurantes.map(e => toEntity(e));
+}
+
+export async function avaliar(restauranteId) {
+  let restaurantes = await post(`usuarios/favoritos/${restauranteId}`);
   return restaurantes.map(e => toEntity(e));
 }
