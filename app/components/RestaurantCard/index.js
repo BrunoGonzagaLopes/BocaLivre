@@ -65,10 +65,8 @@ const RestaurantCard = ({ data = null }) => {
                 <Text style={styles.Textname}>{item.name}</Text>
                 <View style={styles.Distance}>
                   <Image source={require('../../assets/images/icons/marcador.png')} style={{ width: 15, height: 15 }} />
-                  <Text style={styles.TextDistance}>{item.distance}Km</Text>
+                  <Text style={styles.TextDistance}>{item.distance} Km</Text>
                 </View>
-
-
               </View>
             </LinearGradient>
           </TouchableOpacity>

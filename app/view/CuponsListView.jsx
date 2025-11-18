@@ -7,7 +7,7 @@ import BollGereric from '../components/BollGeneric'
 import Points from "../components/Points";
 import CuponsCard from "../components/CuponsCard";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import {getAllCupons, getAllCuponsByUsuario} from '../services/BeneficiosSevice';
+import {getAllCupons, getAllCuponsByUsuario, buyCupom} from '../services/BeneficiosSevice';
 import {dataMaisProxima} from '../services/Util';
 
 export default function CreateRestaurant() {
@@ -63,7 +63,7 @@ export default function CreateRestaurant() {
           <Text style={styles.textcupons}>Histórico</Text>
         </View>
         {cuponsUruario.map((cupon) => (
-            <CuponsCard key={cupon.nome} valor={cupon.codigo} desconto={cupon.cupom.desconto} dataLimite={dataMaisProxima(cupon.cupom.dataLimite, cupon.dataExpiracao)}></CuponsCard>
+            <CuponsCard key={cupon.nome} press={() => {}} valor={cupon.codigo} desconto={cupon.cupom.desconto} dataLimite={dataMaisProxima(cupon.cupom.dataLimite, cupon.dataExpiracao)}></CuponsCard>
         ))}
       </View>
 
@@ -71,7 +71,7 @@ export default function CreateRestaurant() {
       <View style={styles.ContainerMain}>
         <Text style={styles.textcupons}>Cupons Disponíveis</Text>
         {cupons.map((cupon) => (
-            <CuponsCard key={cupon.nome} valor={cupon.valor} desconto={cupon.desconto} dataLimite={cupon.dataLimite}></CuponsCard>
+            <CuponsCard key={cupon.nome} valor={cupon.valor} desconto={cupon.desconto} dataLimite={cupon.dataLimite} press={() => {buyCupom(cupon.id)}}></CuponsCard>
         ))}
       </View>
       </ScrollView>

@@ -3,9 +3,9 @@ import { FlatList, Image, Text, TouchableOpacity, View, ActivityIndicator } from
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
 
-export default function CuponsCard({desconto, dataLimite, valor}) {
+export default function CuponsCard({desconto, dataLimite, valor, press}) {
   return (
-          <TouchableOpacity style={styles.ContainerCard}>
+          <TouchableOpacity style={styles.ContainerCard} onPress={press}>
             <LinearGradient
               colors={["#FEFEFB", "#F3F3F3"]}
               start={{ x: 0.5, y: 0 }}
