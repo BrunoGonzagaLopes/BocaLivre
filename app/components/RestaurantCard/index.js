@@ -13,7 +13,8 @@ const RestaurantCard = ({ cpfDono = null, data = null, editable = false }) => {
   useEffect(() => {
     const loadRestaurants = async () => {
       setLoading(true);
-      const response = await getAllHTTP();
+      let dados = {distancia: 5000}
+      const response = await getAllHTTP(dados);
       console.log(response);
       setRestaurants(response);
 
