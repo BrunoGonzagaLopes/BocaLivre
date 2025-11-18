@@ -3,7 +3,7 @@ import Boll from '../BollGeneric'
 import styles from './style'
 import {getAll} from "../../services/CategoriaSevice";
 import {useEffect, useState} from "react";
-
+import { ScrollView } from "react-native";
 export default function FoodCategory() {
   let [categories, setCategories] = useState(Array);
 
@@ -16,6 +16,11 @@ export default function FoodCategory() {
   }, []);
 
   return (
+    <ScrollView 
+  horizontal 
+  showsHorizontalScrollIndicator={false}
+  contentContainerStyle={{ paddingHorizontal: 10 }}
+>
     <View style={styles.containerCategory}>
       {categories.map((item) => (
         <View key={item.id} style={styles.itemContainer}>
@@ -23,6 +28,6 @@ export default function FoodCategory() {
           <Text style={styles.description}>{item.name}</Text>
         </View>
       ))}
-    </View>
+    </View></ScrollView>
   );
 };

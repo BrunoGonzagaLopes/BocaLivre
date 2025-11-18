@@ -26,7 +26,7 @@ export default function Carousel() {
   };
 
   return (
-    <View>
+    <View style={{marginTop:20}}>
       <FlatList
         ref={flatListRef}
         data={images}

@@ -9,7 +9,8 @@ export default StyleSheet.create({
     categoryBoll:{
     width:60,
     height:60,
-    textAlign:'center'
+    textAlign:'center',
+    marginHorizontal:10
   },
   description:{
     marginTop:10,

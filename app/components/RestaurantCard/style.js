@@ -36,7 +36,7 @@ export default StyleSheet.create({
         fontSize: 14,
         color: '#939393',
         position: 'relative',
-        top: 10
+        top: -10
     },
     Textname: {
         fontFamily: 'Roboto',

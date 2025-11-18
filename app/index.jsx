@@ -15,15 +15,15 @@ import CuponsCard from './components/CuponsCard'
 
 export default function Index() {
 
-  const [Address, setAddress] = useState(null);
+  // const [Address, setAddress] = useState(null);
 
-  useEffect(() => {
-    const load = async () => {
-      const data = await getCurrentAddress();
-      setAddress(data);
-    };
-    load();
-  }, []);
+  // useEffect(() => {
+  //   const load = async () => {
+  //     const data = await getCurrentAddress();
+  //     setAddress(data);
+  //   };
+  //   load();
+  // }, []);
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: '#F3EFEA' }}>
@@ -38,10 +38,10 @@ export default function Index() {
           <View style={styles.ContainerTextEndereco}>
             <Text style={styles.Textendereco}>Endereço</Text>
 
-            <Text style={styles.myLocalization}>
+            {/* <Text style={styles.myLocalization}>
               <Image source={require('./assets/images/icons/marcador.png')} style={{ width: 8, height:8 }} />
               {Address ? `${Address.street} - ${Address.streetNumber}` : "Carregando..."}
-            </Text>
+            </Text> */}
           </View>
 
           <Profile
@@ -51,7 +51,7 @@ export default function Index() {
         </View>
 
         <Search />
-        <Carousel />
+        <Carousel style={styles.Carouselmargin}/>
         <FoodCategory />
         <RestaurantCard />
       </View>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   containerHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
+    paddingHorizontal: 10,
     height: 'auto'
 
   },
@@ -112,4 +112,7 @@ const styles = StyleSheet.create({
     borderColor: '#FAB418',
     borderWidth: 3
   },
+  Carouselmargin:{
+    marginTop:20
+  }
 });
