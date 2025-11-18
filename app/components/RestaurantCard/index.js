@@ -14,18 +14,17 @@ const RestaurantCard = ({ data = null}) => {
     if (data) return;
 
     const loadRestaurants = async () => {
-      try {
-        const response = await RestaurantService.getAllHTTP("api/estabelecimentos");
-        setRestaurants(Array.isArray(response) ? response : []);
-      } catch (error) {
-        console.error('Erro ao carregar restaurantes:', error);
-      } finally {
-        setLoading(false);
-      }
+      setLoading(true);
+      let dados = {distancia: 5000}
+      const response = await getAllHTTP(dados);
+      console.log(response);
+      setRestaurants(response);
+
+      setLoading(false);
     };
 
     loadRestaurants();
-  }, [data]);
+  }, [cpfDono, data]);
 
   if (loading) {
     return (
