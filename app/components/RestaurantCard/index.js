@@ -5,6 +5,7 @@ import styles from './style';
 import { useRouter } from 'expo-router';
 import {getAllHTTP} from '../../services/RestaurantService';
 import {dataMaisProxima} from '../../services/Util';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const RestaurantCard = ({ data = null}) => {
   const [restaurants, setRestaurants] = useState(data || []);
@@ -18,8 +19,7 @@ const RestaurantCard = ({ data = null}) => {
       setLoading(true);
       let dados = {distancia: 5000}
       const response = await getAllHTTP(dados);
-      console.log(response);
-      console.log(dataMaisProxima("15/12/2025","27/11/2025"));
+      console.log(AsyncStorage.getItem("token"));
       setRestaurants(response);
 
       setLoading(false);
