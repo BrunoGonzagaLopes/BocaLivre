@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { CameraView } from 'expo-camera';
-import { useQrCodeService } from '../services/qrCodeService';
+import  useQrCodeService from '../services/qrCodeService';
 import { router } from 'expo-router';
 export default function QrScannerView() {
   const [scanned, setScanned] = useState(false);

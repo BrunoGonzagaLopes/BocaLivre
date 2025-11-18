@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export default StyleSheet.create({
     ContainerCard: {
@@ -38,19 +39,19 @@ export default StyleSheet.create({
         width: '100%',
         color: '#939393',
         right: -16,
-        top: -6
+        top: -2
     },
     Textname: {
         fontFamily: 'Roboto',
         fontWeight: '700',
-        fontSize: 22,
+        fontSize: RFValue(16),
         position: 'relative',
     },
     TextDistance: {
         fontFamily: 'Roboto',
         fontWeight: '700',
         color: "#868686",
-        fontSize: 20,
+        fontSize: RFValue(14),
         marginLeft: "10",
         position: 'relative',
     },

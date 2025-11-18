@@ -6,7 +6,7 @@ export default function RootLayout() {
   return (
     <UserProvider>
     
-        <Slot />  {/* Aqui o Router vai renderizar todas as telas */}
+        <Slot /> 
       
     </UserProvider>
   );

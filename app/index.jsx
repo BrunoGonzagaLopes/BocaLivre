@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router"
+import { RFValue } from 'react-native-responsive-fontsize';
 import { getCurrentAddress } from "./services/locationService";
 
 import Boll from './components/BollGeneric';
@@ -52,7 +53,6 @@ export default function Index() {
         <FoodCategory />
         <View style={styles.ContainerTextoRestaurantes}>
           <Text style={styles.TextoRestaurantes}>Restaurantes para conhecer</Text>
-          <Text style={styles.TextoRestaurantesLink}>Veja mais</Text>
         </View>
         <RestaurantCard />
       </View>
@@ -75,18 +75,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   TextoRestaurantes: {
-    fontSize: 24,
+    fontSize: RFValue(15),
     fontFamily: 'Roboto',
     fontWeight: '700',
     fontStyle: 'normal',
 
-  },
-  TextoRestaurantesLink: {
-    fontSize: 20,
-    fontFamily: 'Roboto',
-    fontWeight: '700',
-    color: '#4d4d4d',
-    fontStyle: 'normal',
   },
   containerHeader: {
     flexDirection: 'row',
@@ -114,7 +107,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
     fontWeight: '700',
     fontStyle: 'normal',
-    fontSize: 12,
+    fontSize: 14,
     lineHeight: 16,
     letterSpacing: 0,
     textAlign: 'center'

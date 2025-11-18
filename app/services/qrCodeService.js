@@ -6,7 +6,7 @@ export default function useQrCodeService() {
 
   async function handleBarCodeScanned({ data }, setScanned) {
     setScanned(true);
-    router.push('/view/assessView')
+    router.push('/view/AssessView')
     alert(`QR Code lido: ${data}`);
     
   }

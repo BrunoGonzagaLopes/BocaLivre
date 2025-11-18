@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { RFValue } from "react-native-responsive-fontsize";
 export default StyleSheet.create({
     ContainerCard: {
         marginLeft: '1%',
@@ -8,7 +8,7 @@ export default StyleSheet.create({
     },
     InfoCard: {
         width: '100%',
-        height: 120,
+        height: 110,
         borderRadius: 12,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 5 },
@@ -63,13 +63,13 @@ export default StyleSheet.create({
     },
     TextCode: {
         position: 'relative',
-        top: 20,
+        top: 15,
         textAlign: 'center',
         color: '#FCC419',
         fontFamily: 'Roboto',
         fontWeight: '700',
-        fontSize: 18,
-        padding:2,
+        fontSize: 20,
+        padding:3,
         borderWidth:1,
         borderColor:'#FCC419',
         borderRadius:50

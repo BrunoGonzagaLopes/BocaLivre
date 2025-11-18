@@ -2,6 +2,7 @@ import { router } from "expo-router";
 import {useEffect, useState} from "react";
 import { useUser } from '../context/UserContext';
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+
 import BollGereric from '../components/BollGeneric'
 import Points from "../components/Points";
 import CuponsCard from "../components/CuponsCard";
@@ -66,7 +67,7 @@ export default function CreateRestaurant() {
         ))}
       </View>
 
-      {/* Cupons gerias  */}
+      {/* Cupons gerais  */}
       <View style={styles.ContainerMain}>
         <Text style={styles.textcupons}>Cupons Disponíveis</Text>
         {cupons.map((cupon) => (
