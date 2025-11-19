@@ -3,30 +3,32 @@ import { FlatList, Image, Text, TouchableOpacity, View, ActivityIndicator } from
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
 import {router, useRouter} from 'expo-router';
-import {getAllHTTP, getById} from '../../services/RestaurantService';
+import {getAllHTTP, getById, getFavoritos} from '../../services/RestaurantService';
 import '../../components/Stars';
 import Stars from "../Stars";
 
-async function navToEstabelecimento(id){
-  let restaurante = await getById(id);
-  console.log(restaurante);
+async function navToEstabelecimento(id, distance){
   router.push({pathname: "/view/FoodTruckRestaurantMenuView", params: {
-    image: restaurante.image
+    restauranteId: id, distance: distance
   }});
 }
 
-const RestaurantCard = ({ data = null, texto = "" , categoria = ""}) => {
-  const [restaurants, setRestaurants] = useState(data || []);
-  const [loading, setLoading] = useState(!data);
+const RestaurantCard = ({ data , texto = "" , categoria = ""}) => {
+  const [restaurants, setRestaurants] = useState( []);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    if (data) return;
-
-    const loadRestaurants = async () => {
+      const loadRestaurants = async () => {
       setLoading(true);
-      let dados = { distancia: 20000, nome: texto, categoria: categoria };
-      const response = await getAllHTTP(dados);
+      let response = [];
+      if (data === "favorito") {
+        response = await getFavoritos();
+        console.log(response);
+      } else {
+        let dados = { distancia: 20000, nome: texto, categoria: categoria };
+        response = await getAllHTTP(dados);
+      }
 
       setRestaurants(response);
       setLoading(false);
@@ -53,7 +55,7 @@ const RestaurantCard = ({ data = null, texto = "" , categoria = ""}) => {
         data={restaurants}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.ContainerCard} onPress={() => navToEstabelecimento(item.id)}>
+          <TouchableOpacity style={styles.ContainerCard} onPress={() => navToEstabelecimento(item.id, item.distance)}>
             <LinearGradient
               colors={["#FFFFFF", "#f3f3f3"]}
               start={{ x: 0.5, y: 0 }}

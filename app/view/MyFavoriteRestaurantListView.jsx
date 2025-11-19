@@ -2,41 +2,10 @@ import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import RestaurantCard from '../components/RestaurantCard';
-import { useUser } from '../context/UserContext';
-import RestaurantService from '../services/RestaurantService';
 import Boll from '../components/BollGeneric';
 
-
 export default function MyBusinesses() {
-  const { user } = useUser();
-
-
-  const [restaurantsList, setRestaurantsList] = useState([]);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
-
-  useEffect(() => {
-    const loadRestaurants = async () => {
-      try {
-        const response = await RestaurantService.getByCpf(user); 
-        setRestaurantsList(response);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadRestaurants();
-  }, [user]);
-
-  if (loading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#000" />
-      </View>
-    );
-  }
 
   return (
     <View style={styles.container}>
@@ -47,8 +16,7 @@ export default function MyBusinesses() {
       </Boll>
 
       <Text style={styles.title}>Meus Favoritos</Text>
-      <RestaurantCard data={restaurantsList} editable={true} />
-      
+      <RestaurantCard data="favorito" />
     </View>
   );
 }
@@ -79,6 +47,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 25,
-    marginBottom: 15
+    marginBottom: 15,
+    marginTop: 30
   },
 });

@@ -6,7 +6,6 @@ import styles from './style'
 
 const card = [
   { icon: require('../../assets/images/icons/coracao.png'), description: 'Favorito', view:"view/MyFavoriteRestaurantListView/" },
-  { icon: require('../../assets/images/icons/marcador.png'), description: 'Endereço', view:"/" },
   { icon: require('../../assets/images/icons/pontos.png'), description: 'Meus Pontos', view:"/view/CuponsListView" },
   { icon: require('../../assets/images/icons/notificacao.png'), description: 'Notificações', view:"/" },
 ];

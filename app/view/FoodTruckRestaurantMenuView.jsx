@@ -8,11 +8,56 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Boll from '../components/BollGeneric';
 import Stars from "../components/Stars";
 import FoodTruckCard from '../components/FoodTruckCard';
-
+import {useEffect, useState} from "react";
+import RestaurantEntity from "../entities/restaurants";
+import {getById, getFavoritos, favoritar, deleteFavorito} from "../services/RestaurantService";
 
 export default function FoodTruckView() {
-  const {image}  = useLocalSearchParams()
-  
+  const {restauranteId, distance}  = useLocalSearchParams()
+  const [restaurant, setRestaurant] = useState(new RestaurantEntity("1", "aguardando", 5, {cep: {logradouro: true, localidade: true}}));
+  const [isFavorito, setIsFavotito] = useState(false);
+  const [arquivo, setArquivo] = useState("");
+  const [cont, setCont] = useState(0);
+
+  useEffect(() => {
+    console.log(distance);
+    const loadRestaurante = async () => {
+      let res = await getById(restauranteId)
+      console.log(res)
+      setRestaurant(res);
+    }
+    loadRestaurante()
+    setCont(1)
+  }, [])
+
+  useEffect(() => {
+    const loadFavorito = async () => {
+      let res = await getFavoritos();
+      for (let estabelecimentos of res) {
+        if (estabelecimentos.id === restaurant.id){
+          setIsFavotito(true);
+          setArquivo(require('../assets/images/icons/coracao.png'))
+          return;
+        }
+      }
+      setIsFavotito(false);
+      setArquivo(require("../assets/images/icons/icons8-coração-96.png"));
+    }
+    loadFavorito()
+  }, [cont])
+
+  const favoritarTela = (id) => {
+    if (isFavorito) {
+      deleteFavorito(id)
+      setIsFavotito(false);
+      setArquivo(require("../assets/images/icons/icons8-coração-96.png"));
+
+    } else {
+      favoritar(id)
+      setIsFavotito(true);
+      setArquivo(require('../assets/images/icons/coracao.png'))
+    }
+  }
 
   return (
 
@@ -26,27 +71,28 @@ export default function FoodTruckView() {
           style={styles.yellowBox}
         >
           <Boll style={styles.componentBoll}>
-            <Text onPress={() => router.back('/')}>
+            <Text onPress={() => router.push('/')}>
               <MaterialCommunityIcons name="chevron-left" size={40} color="black" /></Text>
           </Boll>
         </LinearGradient>
 
+
         <View style={{ alignItems: 'center', height: 80 }}>
-          <Image style={styles.imageRestaurant} source={{ uri: image}}></Image>
-          <Text style={styles.Textdistance}>sfefsfefs km</Text>
-          <TouchableOpacity style={styles.pressable}>
-            <Image source={require('../assets/images/icons/coracao.png')} style={styles.iconfavorite} />
+          <Image style={styles.imageRestaurant} source={{ uri: restaurant.image}}></Image>
+          <Text style={styles.Textdistance}>{distance} km</Text>
+          <TouchableOpacity style={styles.pressable} onPress={() => {favoritarTela(restaurant.id, isFavorito)}}>
+            <Image source={arquivo} style={styles.iconfavorite} />
           </TouchableOpacity>
           <View style={styles.infoRestaurant}>
             <View style={styles.nameandstars}>
-              <Text style={styles.Textname}> fhtfhdfhthfth <Stars avaliacao={"5"} style={styles.starandvalue}></Stars></Text>
+              <Text style={styles.Textname}> {restaurant.name} <Stars avaliacao={"5"} style={styles.starandvalue}></Stars></Text>
             </View>
             <View style={styles.endereço}>
-              <Text style={styles.Textendereço}>Rua nem criatividade agora, 0000. Belo Horizonte</Text>
+              <Text style={styles.Textendereço}>{restaurant.adress.cep.logradouro}, {restaurant.adress.numero}. {restaurant.adress.cep.localidade}</Text>
             </View>
             <View style={styles.mapContainer}>
-              <TouchableOpacity /*onPress={() => Linking.openURL(link)}*/ style={styles.map}>
-                <Text style={styles.maptext}><Image source={require('../assets/images/icons/marcador.png')} style={{ width: 18, height: 18 }} />ABRIR NO MAPA</Text>
+              <TouchableOpacity onPress={() => Linking.openURL(restaurant.urlMap)} style={styles.map}>
+                <Image source={require('../assets/images/icons/marcador.png')} style={{ width: 18, height: 18, marginHorizontal: 5 }} /><Text style={styles.maptext}>ABRIR NO MAPA</Text>
               </TouchableOpacity>
           </View>
             </View>
@@ -55,7 +101,7 @@ export default function FoodTruckView() {
         {/* MAIN */}
         <View style={styles.main}>
           <Text style={styles.textCardapio}>Cardápio</Text>
-          <FoodTruckCard></FoodTruckCard>
+          <FoodTruckCard data={restaurant.id}></FoodTruckCard>
         </View>
 
       </ScrollView>
@@ -66,6 +112,10 @@ export default function FoodTruckView() {
 
 
 const styles = StyleSheet.create({
+  iconfavorite: {
+    width: 25,
+    height: 25
+  },
   yellowBox: {
     height: 162,
     shadowColor: '#000',
@@ -137,21 +187,19 @@ const styles = StyleSheet.create({
     textAlign:'center'
   },
   mapContainer: {
-    justifyContent:'center',
-    width: '100%',
+    width: '100%'
   },
   maptext: {
     fontFamily: 'Roboto',
     fontWeight: '700',
     fontSize: 18,
-    color: '#919191',
-    textAlign: 'center'
+    color: '#919191'
   },
   map: {
-    padding: 5 ,
-    alignContent: 'center',
-    width: '65%',
+    flexDirection: 'row',
     marginTop: 20,
+    paddingVertical:10,
+    paddingHorizontal:10,
     backgroundColor: '#ffffff',
     borderRadius: 15
   },

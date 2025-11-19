@@ -2,27 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, Image, Text, TouchableOpacity, View, ActivityIndicator } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
-import { useRouter } from 'expo-router';
-import { getAllHTTP } from '../../services/RestaurantService';
+import {getCardapio} from '../../services/RestaurantService';
 
 const foodTruckCard = ({ data }) => {
-  const [foodTruck, setfoodTruck] = useState(data || []);
-  const [loading, setLoading] = useState(!data);
-  const router = useRouter();
+  const [foodTruck, setfoodTruck] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (data) return;
-
     const loadfoodTruck = async () => {
-      setLoading(true);
-      let dados = { distancia: 10000 }
-      const response = await getAllHTTP(dados);
-      console.log(response);
-      setfoodTruck(response);
+      const response = await getCardapio("076ca2c9-5e73-499f-99bb-99a50a0384e1");
+      setfoodTruck([]);
       setLoading(false);
     };
 
     loadfoodTruck();
+    alert(foodTruck);
   }, []);
 
 
@@ -36,7 +30,10 @@ const foodTruckCard = ({ data }) => {
 
  
   return (
-    < >
+      <FlatList
+          data={foodTruck}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ card }) => (
           <TouchableOpacity style={styles.ContainerCard}>
             <LinearGradient
               colors={["#FEFEFB", "#F3F3F3"]}
@@ -44,19 +41,16 @@ const foodTruckCard = ({ data }) => {
               end={{ x: 0.5, y: 1 }}
               style={styles.InfoCard}
             >
-              <Image style={styles.ImageCard} source={require('../../assets/images/icons/Star.png')} />
+              <Image style={styles.ImageCard} source={{ uri: card.image }} />
               <View style={styles.ContainerTextInfoCard}>
-                <Text style={styles.ValueInfo}> R$ 15,00
-                </Text>
-                <Text style={styles.Textname}>Self Service</Text>
-              
-
-                <Text style={styles.DescriptionCard}>Restaurante moderno, ambiente acolhedor, sabores únicos, atendimento excepcional e pratos frescos preparados com ingredientes selecionados.</Text>
+                <Text style={styles.ValueInfo}> R${card.preco}</Text>
+                <Text style={styles.Textname}>{card.nome}</Text>
+                <Text style={styles.DescriptionCard}>{card.descricao}</Text>
               </View>
             </LinearGradient>
           </TouchableOpacity>
-        
-    </>
+          )}
+      />
   );
 };
 

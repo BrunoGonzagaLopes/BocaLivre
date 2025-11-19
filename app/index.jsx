@@ -45,17 +45,18 @@ export default function Index() {
 
           <View style={styles.ContainerTextEndereco}>
             <Text style={styles.Textendereco}>Endereço</Text>
-
-             <Text style={styles.myLocalization}>
-              <Image source={require('./assets/images/icons/marcador.png')} style={{ width: 15, height:15 }} />
-              {Address ? `${Address.street} - ${Address.streetNumber}` : "Carregando..."}
-            </Text>
+            <View style={styles.myLocalization}>
+              <Image source={require('./assets/images/icons/marcador.png')} style={{ width: 15, height:15, marginRight: 5, marginTop: -2 }} />
+              <Text style={styles.textRua}>
+                {Address ? `${(Address.street.length <= 16) ? Address.street : Address.street.substring(0, 15)+"..."} - ${Address.streetNumber}` : "Carregando..."}
+              </Text>
+            </View>
           </View>
 
           <Profile
               uri={user}
             style={styles.positionBoll}
-            onPress={() => router.push('/view/FoodTruckRestaurantMenuView')}
+            onPress={() => router.push('/view/UserProfileView')}
           />
         </View>
         <Search />
@@ -124,16 +125,20 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   myLocalization: {
+    flexDirection: 'row',
+    top: 20,
+    marginHorizontal: "auto"
+  },
+  textRua: {
     fontFamily: 'Roboto',
     fontWeight: '700',
     fontStyle: 'normal',
     fontSize: 16,
     lineHeight: 14,
-    top: 15,
+
     letterSpacing: 0.5,
     textAlign: 'center'
   },
-
   imageBoll: {
     width: '100%',
     height: '100%',

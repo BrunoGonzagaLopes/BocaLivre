@@ -27,7 +27,7 @@ export default StyleSheet.create({
     },
     ContainerTextInfoCard: {
         flex: 1,
-        marginLeft: 10,
+        marginLeft: 0,
         justifyContent: 'center',
     },
     ValueInfo: {

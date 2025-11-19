@@ -1,11 +1,18 @@
 import RestaurantEntity from "../entities/restaurants";
 import {get, post, deletar} from "../services/httpService";
 import {getCurrentAddress} from "../services/locationService";
+import CardapioEntity from "../entities/Cardapio";
 
 const toEntity = (d) => {
   return new RestaurantEntity(
     d.id, d.nome, d.mediaAvaliacao, d.endereco, d.descricao,
-    d.imageUrl, d.distancia/1000
+    d.imageUrl, d.distancia/1000, d.urlMaps
+  );
+};
+
+const toCardapioEntity = (d) => {
+  return new CardapioEntity(
+      d.id, d.nome, d.descricao, d.preco, d.urlImage, d.quantidadePessoasServidas
   );
 };
 
@@ -31,6 +38,11 @@ export async function getAllHTTP(dados) {
 
   let restaurantes = await get(`estabelecimentos?nome=${dados.nome}&endereco=${enderecoFormatado}&categoria=${dados.categoria}&distancia=${dados.distancia}`)
   return restaurantes.map(e => toEntity(e));
+}
+
+export async function getCardapio(id) {
+  let cardapio = await get(`estabelecimentos/${id}/cardapio`);
+  return cardapio.map(e => toCardapioEntity(e));
 }
 
 export async function getById(id) {
