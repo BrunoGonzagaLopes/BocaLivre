@@ -53,7 +53,7 @@ export async function favoritar(restauranteId) {
   return restaurantes.map(e => toEntity(e));
 }
 
-export async function avaliar(restauranteId) {
-  let restaurantes = await post(`usuarios/favoritos/${restauranteId}`);
+export async function avaliar(body) {
+  let restaurantes = await post(`estabelecimentos/avaliacoes`, body);
   return restaurantes.map(e => toEntity(e));
 }

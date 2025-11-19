@@ -39,10 +39,9 @@ export async function buyCupom(id) {
 
 export async function adicionarPontos(codigo) {
     let object = {codigo: codigo}
-    alert(object);
     let dados = await post("usuarios/beneficios/pontos", object);
     if (dados.mensagem !== undefined) {
         alert(dados.mensagem)
     };
-    
+    return dados;
 }

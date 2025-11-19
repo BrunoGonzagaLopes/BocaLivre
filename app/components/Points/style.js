@@ -5,18 +5,18 @@ export default StyleSheet.create({
         flexDirection: 'row',
         gap: 10,
         backgroundColor:'#fff',
-        padding:3, 
+        paddingHorizontal:10,
+        paddingVertical:3,
         margin:5,
-        width:82,
         alignContent:'center',
         borderRadius:10
     },
     image: {
-        width: 21,
-        height: 21
+        width: 24,
+        height: 24
     },
     textPoints: {
-        fontSize: 14,
+        fontSize: 24,
         fontWeight: 700,
         fontFamily: 'Roboto'
     }

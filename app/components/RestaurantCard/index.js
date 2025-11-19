@@ -12,7 +12,7 @@ async function navToEstabelecimento(id){
   console.log(restaurante);
 }
 
-const RestaurantCard = ({ data = null }) => {
+const RestaurantCard = ({ data = null, texto = "" }) => {
   const [restaurants, setRestaurants] = useState(data || []);
   const [loading, setLoading] = useState(!data);
   const router = useRouter();
@@ -22,7 +22,7 @@ const RestaurantCard = ({ data = null }) => {
 
     const loadRestaurants = async () => {
       setLoading(true);
-      let dados = { distancia: 20000 }
+      let dados = { distancia: 20000, nome: texto}
       const response = await getAllHTTP(dados);
 
       setRestaurants(response);

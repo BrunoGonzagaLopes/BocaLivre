@@ -60,9 +60,8 @@ export default function CreateRestaurant() {
       <View style={styles.ContainerMain}>
         <View style={{flexDirection:'row',justifyContent:'space-between' }}>
           <Text style={styles.textcupons}>Meus Cupons</Text>
-          <Text style={styles.textcupons}>Histórico</Text>
         </View>
-        {cuponsUruario.map((cupon) => (
+        {cuponsUruario.filter(cupom => !cupom.utilizado).map((cupon) => (
             <CuponsCard key={cupon.nome} press={() => {}} valor={cupon.codigo} desconto={cupon.cupom.desconto} dataLimite={dataMaisProxima(cupon.cupom.dataLimite, cupon.dataExpiracao)}></CuponsCard>
         ))}
       </View>
@@ -102,7 +101,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
     fontWeight: '700',
     fontStyle: 'normal',
-    fontSize: 12,
+    fontSize: 16,
+    marginBottom: 5,
     lineHeight: 16,
     letterSpacing: 0,
     textAlign: 'center'
@@ -115,6 +115,8 @@ const styles = StyleSheet.create({
     color: '#595959',
     fontFamily: 'Roboto',
     fontWeight: '700',
-    fontSize: 16
+    fontSize: 22,
+    marginBottom: 10,
+    marginLeft: 5
   }
 });

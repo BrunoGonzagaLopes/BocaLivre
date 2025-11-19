@@ -7,11 +7,7 @@ import Boll from '../components/BollGeneric';
 import RestaurantCard from '../components/RestaurantCard';
 import Search from '../components/Search';
 
-
-
 export default function SearchListView() {
-
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: '#F3EFEA' }}>
 
@@ -24,7 +20,7 @@ export default function SearchListView() {
           </View>
         <Search />
 
-        <RestaurantCard />
+        <RestaurantCard  />
     </ScrollView>
   );
 }
@@ -44,5 +40,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginHorizontal: 20
   }
-  
 });

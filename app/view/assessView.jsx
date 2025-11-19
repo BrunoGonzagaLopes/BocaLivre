@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Star, X } from "phosphor-react-native"; 
+import { Star, X } from "phosphor-react-native";
 import { useNavigation } from '@react-navigation/native'; 
-import { router } from 'expo-router';
+import {router, useLocalSearchParams} from 'expo-router';
+import {avaliar} from '../services/RestaurantService';
+
 export default function RatingScreen() {
   const [rating, setRating] = useState(0);
   const navigation = useNavigation();
+  const {restauranteid} = useLocalSearchParams();
 
   const handleSubmit = () => {
-
-    
+    let object = {valor: rating, estabelecimento: restauranteid};
+    avaliar(object)
+    router.push('/view/CuponsListView')
   }
 
   const handleClose = () => {
-    router.push('/')
+    router.push('/view/CuponsListView');
   }
 
   return (
