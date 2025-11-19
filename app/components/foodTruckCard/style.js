@@ -5,6 +5,7 @@ export default StyleSheet.create({
         marginLeft: '5%',
         marginRight: '5%',
         marginVertical: 10,
+        
     },
     InfoCard: {
         width: '100%',
