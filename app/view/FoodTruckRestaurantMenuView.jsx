@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View, Pressable, ScrollView, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, Text, View, Pressable, ScrollView, TouchableOpacity,Linking } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 
@@ -12,6 +12,7 @@ import FoodTruckCard from '../components/FoodTruckCard';
 
 export default function FoodTruckView() {
   
+
   return (
 
     <View style={{ backgroundColor: '#F3EFEA', flex: 1 }}>
@@ -39,14 +40,15 @@ export default function FoodTruckView() {
             <View style={styles.nameandstars}>
               <Text style={styles.Textname}> Bar do sr zé <Stars avaliacao={"5"} style={styles.starandvalue}></Stars></Text>
             </View>
-            <View style={styles.TextEndereço}><Text>Rua nem criatividade agora, 0000. Belo Horizonte</Text>
+            <View style={styles.endereço}>
+              <Text style={styles.Textendereço}>Rua nem criatividade agora, 0000. Belo Horizonte</Text>
             </View>
             <View style={styles.mapContainer}>
               <TouchableOpacity /*onPress={() => Linking.openURL(link)}*/ style={styles.map}>
                 <Text style={styles.maptext}><Image source={require('../assets/images/icons/marcador.png')} style={{ width: 18, height: 18 }} />ABRIR NO MAPA</Text>
               </TouchableOpacity>
-            </View>
           </View>
+            </View>
         </View>
 
         {/* MAIN */}
@@ -95,7 +97,8 @@ const styles = StyleSheet.create({
   },
   infoRestaurant: {
     position: 'relative',
-    bottom: 60
+    bottom: 60,
+    alignItems:'center'
   },
   pressable: {
     backgroundColor:'#ffffff',
@@ -124,15 +127,16 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 32,
   },
-  TextEndereço: {
+  Textendereço: {
     color: '#919191',
     fontFamily: 'Roboto',
     fontWeight: '700',
+    fontSize: 14,
     width: '100%',
-    textAlign: 'center'
+    textAlign:'center'
   },
   mapContainer: {
-
+    justifyContent:'center',
     width: '100%',
   },
   maptext: {
@@ -140,14 +144,12 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 18,
     color: '#919191',
-    width: '100%',
     textAlign: 'center'
   },
   map: {
     padding: 5 ,
     alignContent: 'center',
     width: '65%',
-    marginHorizontal: '17.5%',
     marginTop: 20,
     backgroundColor: '#ffffff',
     borderRadius: 15
@@ -155,7 +157,7 @@ const styles = StyleSheet.create({
   main: {
   
     position: 'relative',
-    top: 120
+    top: 150
   },
   textCardapio:{
     marginLeft:20,

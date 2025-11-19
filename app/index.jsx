@@ -55,7 +55,7 @@ export default function Index() {
           <Profile
               uri={user}
             style={styles.positionBoll}
-            onPress={() => router.push('/view/UserProfileView')}
+            onPress={() => router.push('/view/FoodTruckRestaurantMenuView')}
           />
         </View>
         <Search />
