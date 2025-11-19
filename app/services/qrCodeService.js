@@ -9,7 +9,8 @@ export function useQrCodeService() {
     setScanned(true);
     alert(`QR Code lido: ${data}`);
     adicionarPontos(data)
-    router.push('/view/assessView')
+    router.push('/view/AssessView')
+    
   }
 
   return {

@@ -43,6 +43,6 @@ export async function adicionarPontos(codigo) {
     let dados = await post("usuarios/beneficios/pontos", object);
     if (dados.mensagem !== undefined) {
         alert(dados.mensagem)
-    }
-    router.push('/view/assessView');
+    };
+    
 }

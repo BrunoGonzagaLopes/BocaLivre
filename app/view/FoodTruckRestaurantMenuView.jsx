@@ -37,7 +37,7 @@ export default function UserProfileView() {
       </LinearGradient>
 
       <View style={{ alignItems: 'center', height: 80 }}>
-        <Profile style={styles.profileCircle} />
+        
         <Pressable style={styles.editPressable} onPress={() => router.push('/')}>
           <Image source={require('../assets/images/icons/edit.png')} />
         </Pressable>
