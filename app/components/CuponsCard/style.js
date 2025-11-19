@@ -36,7 +36,7 @@ export default StyleSheet.create({
         textAlign: 'left',
         fontFamily: 'Roboto',
         fontWeight: '700',
-        fontSize: RFValue(16),
+        fontSize: RFValue(15),
         color: '#595959',
     },
     Info: {
@@ -59,7 +59,7 @@ export default StyleSheet.create({
         color:'#7c7c7c',
         fontFamily: 'Roboto',
         fontWeight: '700',
-        fontSize: 16,
+        fontSize: RFValue(12),
     },
     TextCode: {
         position: 'relative',
@@ -68,7 +68,7 @@ export default StyleSheet.create({
         color: '#FCC419',
         fontFamily: 'Roboto',
         fontWeight: '700',
-       fontSize: RFValue(16),
+       fontSize: RFValue(15),
         padding:3,
         borderWidth:1,
         borderColor:'#FCC419',

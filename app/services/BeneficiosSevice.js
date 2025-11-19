@@ -44,5 +44,5 @@ export async function adicionarPontos(codigo) {
     if (dados.mensagem !== undefined) {
         alert(dados.mensagem)
     }
-    router.push("/view/CuponsListView");
+    router.push('/view/assessView');
 }
